@@ -3,8 +3,9 @@ import React from 'react';
 import { FormStepProps } from '../types';
 import { FormSection } from '../../styles/form';
 
-const Continuation = ({ title, formOptions }: FormStepProps) => {
+const Continuation = ({ title, formOptions, formData }: FormStepProps) => {
   const { register } = formOptions;
+  const { continuation = '' } = formData;
   return (
     <FormSection>
       <h2>{title}</h2>
@@ -16,7 +17,7 @@ const Continuation = ({ title, formOptions }: FormStepProps) => {
       <div>
         <label htmlFor="continuation">
           Continuation
-          <input type="text" ref={register} name="continuation" />
+          <input type="text" ref={register} name="continuation" defaultValue={continuation} />
         </label>
       </div>
     </FormSection>

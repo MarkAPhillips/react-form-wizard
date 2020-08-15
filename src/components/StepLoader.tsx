@@ -1,5 +1,7 @@
 import React, { Suspense, lazy, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { stepMapper } from './steps/stepMapper';
+import { formStepDataSelector } from '../selectors';
 
 export const StepLoader = ({
   component, step, title, formOptions,
@@ -12,10 +14,10 @@ export const StepLoader = ({
   }
 
   const FormStep = useMemo(() => lazy(func), [component]);
-
+  const formData = useSelector(formStepDataSelector);
   return (
     <Suspense fallback={<div>Form Loading...</div>}>
-      <FormStep title={title} formOptions={formOptions} />
+      <FormStep title={title} formOptions={formOptions} formData={formData} />
     </Suspense>
   );
 };

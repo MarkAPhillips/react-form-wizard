@@ -3,8 +3,9 @@ import React from 'react';
 import { FormStepProps } from '../types';
 import { FormSection } from '../../styles/form';
 
-const Declaration = ({ title, formOptions }: FormStepProps) => {
+const Declaration = ({ title, formOptions, formData }: FormStepProps) => {
   const { register } = formOptions;
+  const { declaration = '' } = formData;
   return (
     <FormSection>
       <h2>{title}</h2>
@@ -16,7 +17,7 @@ const Declaration = ({ title, formOptions }: FormStepProps) => {
       <div>
         <label htmlFor="declaration">
           Declaration
-          <input type="text" ref={register} name="declaration" />
+          <input type="text" ref={register} name="declaration" defaultValue={declaration} />
         </label>
       </div>
     </FormSection>

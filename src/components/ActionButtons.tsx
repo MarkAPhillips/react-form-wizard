@@ -4,6 +4,7 @@ import { SubmitButton } from '../styles/form';
 
 type ActionButtonProps = {
   isFirstStep: boolean
+  isLastStep: boolean
 }
 
 const ActionButtonContainer = styled.section`
@@ -14,9 +15,9 @@ const ActionButtonContainer = styled.section`
   height: 50px;
 `;
 
-export const ActionButtons = ({ isFirstStep }: ActionButtonProps) => (
+export const ActionButtons = ({ isFirstStep, isLastStep }: ActionButtonProps) => (
   <ActionButtonContainer>
     {!isFirstStep && (<SubmitButton value="Previous" id="previous" />)}
-    <SubmitButton value="Next" id="next" />
+    {!isLastStep && (<SubmitButton value="Next" id="next" />)}
   </ActionButtonContainer>
 );

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import { form } from './formReducer';
-import { formData } from './formDataReducer';
+import { data } from './dataReducer';
 
 export default combineReducers({
   form,
-  formData,
+  data,
 } as any);

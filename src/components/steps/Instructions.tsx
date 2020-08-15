@@ -3,8 +3,9 @@ import React from 'react';
 import { FormStepProps } from '../types';
 import { FormSection } from '../../styles/form';
 
-const Instructions = ({ title, formOptions }: FormStepProps) => {
+const Instructions = ({ title, formOptions, formData }: FormStepProps) => {
   const { register } = formOptions;
+  const { roleAppliedFor = '' } = formData;
   return (
     <FormSection>
       <h2>{title}</h2>
@@ -14,9 +15,9 @@ const Instructions = ({ title, formOptions }: FormStepProps) => {
         </p>
       </div>
       <div>
-        <label htmlFor="instructions">
-          Instructions
-          <input type="text" ref={register} name="instructions" />
+        <label htmlFor="roleAppliedFor">
+          Role Applied for
+          <input type="text" ref={register} name="roleAppliedFor" defaultValue={roleAppliedFor} />
         </label>
       </div>
     </FormSection>

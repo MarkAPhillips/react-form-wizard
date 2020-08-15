@@ -3,8 +3,9 @@ import React from 'react';
 import { FormStepProps } from '../types';
 import { FormSection } from '../../styles/form';
 
-const Employment = ({ title, formOptions }: FormStepProps) => {
+const Employment = ({ title, formOptions, formData }: FormStepProps) => {
   const { register } = formOptions;
+  const { company = '' } = formData;
   return (
     <FormSection>
       <h2>{title}</h2>
@@ -14,9 +15,9 @@ const Employment = ({ title, formOptions }: FormStepProps) => {
         </p>
       </div>
       <div>
-        <label htmlFor="employment">
-          Employment
-          <input type="text" ref={register} name="employment" />
+        <label htmlFor="company">
+          Company
+          <input type="text" ref={register} name="company" defaultValue={company} />
         </label>
       </div>
     </FormSection>

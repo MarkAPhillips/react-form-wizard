@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Progress, StepLoader, ActionButtons } from '.';
-import { formSelector } from '../selectors';
+import { formStatusSelector } from '../selectors';
 import { updateFormData, updateForm } from '../actions';
 
 const WizardContainer = styled.section`
@@ -17,17 +17,11 @@ const FormContainer = styled.div`
 `;
 
 export const Wizard = () => {
-  const form = useSelector(formSelector);
+  const {
+    isFirstStep, isLastStep, currentStep, title, componentName,
+  } = useSelector(formStatusSelector);
   const formOptions = useForm<any>();
   const dispatch = useDispatch();
-
-  const { steps, currentStep } = form;
-
-  const step = steps.find((item: any) => item.id === currentStep);
-  const { componentName, stepName } = step;
-  const title = `Step ${currentStep} ${stepName}`;
-  const isFirstStep = currentStep === 1;
-  const isLastStep = currentStep === steps.length;
 
   const onSubmit = (data: any, e: any) => {
     dispatch(updateFormData(currentStep, data));
@@ -52,7 +46,7 @@ export const Wizard = () => {
             title={title}
             formOptions={formOptions}
           />
-          <ActionButtons isFirstStep={isFirstStep} />
+          <ActionButtons isFirstStep={isFirstStep} isLastStep={isLastStep} />
         </FormContainer>
       </form>
     </WizardContainer>
