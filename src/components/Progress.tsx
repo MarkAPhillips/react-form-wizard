@@ -3,7 +3,12 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { formStepsSelector } from '../selectors';
 
-const ProgessContainer = styled.aside``;
+const ProgessContainer = styled.aside`
+  margin: 0;
+  padding: 0;
+  flex: 0 0 240px;
+  height: 100%;
+`;
 
 const ProgressItems = styled.ul``;
 

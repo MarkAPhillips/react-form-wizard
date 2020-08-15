@@ -6,7 +6,7 @@ type LayoutProps = {
   children: ReactNode;
 }
 
-const LayoutContainer = styled.div`
+const LayoutContainer = styled.main`
   height: 100%;
 `;
 

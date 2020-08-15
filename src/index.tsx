@@ -10,6 +10,7 @@ import thunk from 'redux-thunk';
 import { Routes } from './Routes';
 import { Layout } from './components';
 import rootReducer from './reducers';
+import { GlobalStyle } from './styles';
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -30,6 +31,7 @@ const App = () => (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <Router>
+        <GlobalStyle />
         <Layout>
           <Routes />
         </Layout>

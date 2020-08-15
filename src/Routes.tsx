@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { Home, Wizard, Review } from './components';
+import { Home, Wizard } from './components';
 
 export const Routes = () => (
   <Switch>
@@ -10,9 +10,6 @@ export const Routes = () => (
     </Route>
     <Route exact strict path="/steps">
       <Wizard />
-    </Route>
-    <Route exact strict path="/review">
-      <Review />
     </Route>
     <Redirect to="/" />
   </Switch>

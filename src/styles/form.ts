@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { rounded, button } from './mixins';
 
+export const FormSection = styled.section`
+  padding-bottom: 52px;
+`;
+
 export const Button = styled.button`
   ${button}
 `;

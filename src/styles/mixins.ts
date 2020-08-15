@@ -13,5 +13,6 @@ export const button = css`
   ${rounded}
   &:hover {
     opacity: 0.7;
+    cursor: pointer;
   }
 `;

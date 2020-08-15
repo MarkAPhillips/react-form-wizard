@@ -1,17 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Progress, StepLoader, ActionButtons } from '.';
 import { formSelector } from '../selectors';
 import { updateFormData, updateForm } from '../actions';
 
-const WizardContainer = styled.section``;
+const WizardContainer = styled.section`
+  display: flex;
+`;
+
+const FormContainer = styled.div`
+  display:flex;
+  flex-direction: column;
+  height: 100%;
+`;
 
 export const Wizard = () => {
   const form = useSelector(formSelector);
-  const history = useHistory();
   const formOptions = useForm<any>();
   const dispatch = useDispatch();
 
@@ -31,7 +37,7 @@ export const Wizard = () => {
       const nextStep = currentStep + inc;
       dispatch(updateForm(nextStep));
     } else {
-      history.push('/review');
+      console.log('Form completed and submitted');
     }
   };
 
@@ -39,13 +45,15 @@ export const Wizard = () => {
     <WizardContainer>
       <Progress />
       <form onSubmit={formOptions.handleSubmit(onSubmit)}>
-        <StepLoader
-          component={componentName}
-          step={currentStep}
-          title={title}
-          formOptions={formOptions}
-        />
-        <ActionButtons isFirstStep={isFirstStep} />
+        <FormContainer>
+          <StepLoader
+            component={componentName}
+            step={currentStep}
+            title={title}
+            formOptions={formOptions}
+          />
+          <ActionButtons isFirstStep={isFirstStep} />
+        </FormContainer>
       </form>
     </WizardContainer>
   );

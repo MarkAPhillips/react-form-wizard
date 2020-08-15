@@ -6,7 +6,13 @@ type ActionButtonProps = {
   isFirstStep: boolean
 }
 
-const ActionButtonContainer = styled.div``;
+const ActionButtonContainer = styled.section`
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  background: rgba(255,255,255,.9);
+  height: 50px;
+`;
 
 export const ActionButtons = ({ isFirstStep }: ActionButtonProps) => (
   <ActionButtonContainer>

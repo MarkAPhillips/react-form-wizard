@@ -1,11 +1,12 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { FormStepProps } from '../types';
+import { FormSection } from '../../styles/form';
 
 const Employment = ({ title, formOptions }: FormStepProps) => {
   const { register } = formOptions;
   return (
-    <section>
+    <FormSection>
       <h2>{title}</h2>
       <div>
         <p>
@@ -18,7 +19,7 @@ const Employment = ({ title, formOptions }: FormStepProps) => {
           <input type="text" ref={register} name="employment" />
         </label>
       </div>
-    </section>
+    </FormSection>
   );
 };
 
