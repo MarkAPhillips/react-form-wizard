@@ -1,4 +1,4 @@
-import { UPDATE_FORM_DATA, FormDataActionTypes } from '../actions';
+import { UPDATE_FORM_DATA, RESET_FORM_DATA, FormDataActionTypes } from '../actions';
 
 const initialState: any = {};
 
@@ -12,6 +12,8 @@ export const data = (state = initialState, action: FormDataActionTypes) => {
         [step]: payload.data,
       };
     }
+    case RESET_FORM_DATA:
+      return initialState;
     default:
       return state;
   }

@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../styles/form';
 import { FormTypes } from '../config/types';
-import { createForm } from '../actions';
+import { createForm, resetFormData } from '../actions';
 
-const HomeContainer = styled.section``;
+const HomeContainer = styled.section`
+  padding: 16px;
+`;
 
 export const Home = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(resetFormData());
+  }, []);
 
   const handleClick = (type: FormTypes) => {
     dispatch(createForm(type));

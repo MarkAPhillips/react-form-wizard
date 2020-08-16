@@ -4,50 +4,42 @@ import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { formStepsSelector } from '../selectors';
-import { rounded } from '../styles/mixins';
 
-type ProgressProps = {
+type ProgressItemProps = {
   currentStep: number
 }
 
 const ProgessContainer = styled.aside`
   margin: 0;
   padding: 0;
-  flex: 0 0 280px;
+  flex: 0 0 240px;
   height: 100%;
 `;
 
 const ProgressItems = styled.ul`
   list-style: none;
-  margin: 16px;
-  ${rounded}
-  background: rgb(235,235,235);
-  border: 1px solid rgb(188,188,188);
+  padding-left: 16px;
   li {
-    padding: 12px 0;
-  }
-  span {
-    display: inline-block;
-    padding-left: 16px;
+    padding: 8px 0;
   }
 `;
 
 const iconSelector = (currentStep: number, step: number): IconProp => {
   if (currentStep === step) return 'angle-right';
-  if (currentStep > step) return 'check';
+  if (currentStep > step) return 'check-circle';
   return ['far', 'circle'];
 };
 
-export const Progress = ({ currentStep }: ProgressProps) => {
+export const ProgressItem = ({ currentStep }: ProgressItemProps) => {
   const steps = useSelector(formStepsSelector);
   return (
     <ProgessContainer>
       <ProgressItems>
         {steps.map(((item) => (
           <li key={item.id}>
-            <FontAwesomeIcon icon={iconSelector(currentStep, item.id)} size="sm" color="green" />
+            <FontAwesomeIcon icon={iconSelector(currentStep, item.id)} />
             &nbsp;
-            <span>{item.stepName}</span>
+            {item.stepName}
           </li>
         )))}
       </ProgressItems>

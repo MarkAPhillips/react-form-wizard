@@ -14,6 +14,7 @@ const FormContainer = styled.div`
   display:flex;
   flex-direction: column;
   height: 100%;
+  padding: 16px;
 `;
 
 export const Wizard = () => {
@@ -22,6 +23,7 @@ export const Wizard = () => {
   } = useSelector(formStatusSelector);
   const formOptions = useForm<any>();
   const dispatch = useDispatch();
+  const { handleSubmit } = formOptions;
 
   const onSubmit = (data: any, e: any) => {
     dispatch(updateFormData(currentStep, data));
@@ -37,8 +39,8 @@ export const Wizard = () => {
 
   return (
     <WizardContainer>
-      <Progress />
-      <form onSubmit={formOptions.handleSubmit(onSubmit)}>
+      <Progress currentStep={currentStep} />
+      <form onSubmit={handleSubmit(onSubmit)}>
         <FormContainer>
           <StepLoader
             component={componentName}
@@ -46,7 +48,10 @@ export const Wizard = () => {
             title={title}
             formOptions={formOptions}
           />
-          <ActionButtons isFirstStep={isFirstStep} isLastStep={isLastStep} />
+          <ActionButtons
+            isFirstStep={isFirstStep}
+            isLastStep={isLastStep}
+          />
         </FormContainer>
       </form>
     </WizardContainer>

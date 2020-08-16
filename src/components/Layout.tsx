@@ -12,7 +12,7 @@ const LayoutContainer = styled.main`
 
 export const Layout = ({ children }: LayoutProps) => (
   <LayoutContainer>
-    <Header text="Form Wizard" />
+    <Header text="Form Wizard Demo" />
     {children}
   </LayoutContainer>
 );
