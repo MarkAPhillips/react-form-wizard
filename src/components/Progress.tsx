@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { formStepsSelector } from '../selectors';
 import { rounded } from '../styles/mixins';
+import { ProgressItem } from '.';
 
 type ProgressProps = {
   currentStep: number
@@ -26,17 +25,7 @@ const ProgressItems = styled.ul`
   li {
     padding: 12px 0;
   }
-  span {
-    display: inline-block;
-    padding-left: 16px;
-  }
 `;
-
-const iconSelector = (currentStep: number, step: number): IconProp => {
-  if (currentStep === step) return 'angle-right';
-  if (currentStep > step) return 'check';
-  return ['far', 'circle'];
-};
 
 export const Progress = ({ currentStep }: ProgressProps) => {
   const steps = useSelector(formStepsSelector);
@@ -45,9 +34,7 @@ export const Progress = ({ currentStep }: ProgressProps) => {
       <ProgressItems>
         {steps.map(((item) => (
           <li key={item.id}>
-            <FontAwesomeIcon icon={iconSelector(currentStep, item.id)} size="sm" color="green" />
-            &nbsp;
-            <span>{item.stepName}</span>
+            <ProgressItem currentStep={currentStep} item={item} />
           </li>
         )))}
       </ProgressItems>

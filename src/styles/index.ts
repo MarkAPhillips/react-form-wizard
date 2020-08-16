@@ -16,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   html, body {
     height: 100%;
+    width: 100%;
   }
   body {
       font-family: ${fonts.family};
@@ -25,5 +26,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   #root {
     height: 100%;
+    width: 100%;
   }
 `;

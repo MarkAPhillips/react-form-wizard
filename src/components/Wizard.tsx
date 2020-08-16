@@ -30,8 +30,7 @@ export const Wizard = () => {
     const submitButton = e.nativeEvent.submitter.id;
     if (submitButton === 'previous' || !isLastStep) {
       const inc = submitButton === 'next' ? 1 : -1;
-      const nextStep = currentStep + inc;
-      dispatch(updateForm(nextStep));
+      dispatch(updateForm(currentStep + inc));
     } else {
       console.log('Form completed and submitted');
     }
@@ -50,7 +49,7 @@ export const Wizard = () => {
           />
           <ActionButtons
             isFirstStep={isFirstStep}
-            isLastStep={isLastStep}
+            nextText={isLastStep ? 'Validate and Submit' : undefined}
           />
         </FormContainer>
       </form>

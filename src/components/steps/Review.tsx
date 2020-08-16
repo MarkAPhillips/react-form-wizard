@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { FormStepProps } from '../types';
 import { formDataSelector } from '../../selectors';
 import { formFieldMapping } from '../../config/formFieldMapping';
+import { FormSection } from '../../styles/form';
 
 const ReviewContainer = styled.section``;
 
@@ -22,7 +23,7 @@ const Review = ({ formTitle }: FormStepProps) => {
   return (
     <ReviewContainer>
       <h2>{formTitle}</h2>
-      <div>
+      <FormSection>
         {Object.keys(formData).map((key) => (
           <div key={key}>
             <div>
@@ -41,7 +42,7 @@ const Review = ({ formTitle }: FormStepProps) => {
             ))}
           </div>
         ))}
-      </div>
+      </FormSection>
     </ReviewContainer>
   );
 };
