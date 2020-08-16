@@ -19,7 +19,7 @@ const FormContainer = styled.div`
 
 export const Wizard = () => {
   const {
-    isFirstStep, isLastStep, currentStep, title, componentName,
+    isFirstStep, isLastStep, currentStep, formTitle, componentName,
   } = useSelector(formStatusSelector);
   const formOptions = useForm<any>();
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ export const Wizard = () => {
           <StepLoader
             component={componentName}
             step={currentStep}
-            title={title}
+            formTitle={formTitle}
             formOptions={formOptions}
           />
           <ActionButtons

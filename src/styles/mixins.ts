@@ -16,3 +16,12 @@ export const button = css`
     cursor: pointer;
   }
 `;
+
+export const formControl = css`
+  display: flex;
+  flex-direction: column;
+  label {
+    display: block;
+    margin: 8px 0;
+  }
+`;

@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { formFieldMapping } from '../../config/formFieldMapping';
-import { rounded } from '../../styles/mixins';
+import { rounded, formControl } from '../../styles/mixins';
+import { FieldError } from '.';
 
 type InputTextProps = {
   register: any
@@ -10,39 +11,43 @@ type InputTextProps = {
   value: string
   maxLength?: number
   placeholder?: string
+  errorText?: string
+  width?: string
 }
 
 export const Input = styled.input`
   padding: 0.5em;
   ${rounded}
   border: 1px solid rgb(188,188,188);
-  margin-left: 8px;
 `;
 
-const ErrorContainer = styled.div`
-  color: rgb(255,0,0);
+export const InputTextContainer = styled.div<Pick<InputTextProps, 'width'>>`
+  ${formControl}
+  width: ${(props) => props.width};
 `;
 
 export const InputText = ({
-  register, name, value, errors, maxLength, placeholder,
+  register, name, value, errors, maxLength, placeholder, errorText, width,
 }: InputTextProps) => (
-  <div>
+  <InputTextContainer width={width}>
     <label htmlFor={name}>
       {formFieldMapping[name]}
-      <Input
-        type="text"
-        ref={register}
-        name={name}
-        defaultValue={value}
-        maxLength={maxLength}
-        placeholder={placeholder}
-      />
     </label>
-    {errors[name] && <ErrorContainer>Required</ErrorContainer>}
-  </div>
+    <Input
+      type="text"
+      ref={register}
+      name={name}
+      defaultValue={value}
+      maxLength={maxLength}
+      placeholder={placeholder}
+    />
+    {errorText && errors[name] && <FieldError text={errorText} />}
+  </InputTextContainer>
 );
 
 InputText.defaultProps = {
   maxLength: 50,
   placeholder: '',
+  width: '100%',
+  errorText: 'Field required',
 };

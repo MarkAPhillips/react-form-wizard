@@ -1,5 +1,5 @@
 export type FormStepProps = {
-  title: string
+  formTitle: string
   formData?: any
   formOptions?: any
 }
