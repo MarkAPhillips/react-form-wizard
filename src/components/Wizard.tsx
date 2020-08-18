@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Progress, StepLoader, ActionButtons } from '.';
 import { formStatusSelector } from '../selectors';
@@ -23,16 +24,19 @@ export const Wizard = () => {
   } = useSelector(formStatusSelector);
   const formOptions = useForm<any>();
   const dispatch = useDispatch();
+  const history = useHistory();
   const { handleSubmit } = formOptions;
 
   const onSubmit = (data: any, e: any) => {
-    dispatch(updateFormData(currentStep, data));
     const submitButton = e.nativeEvent.submitter.id;
-    if (submitButton === 'previous' || !isLastStep) {
+    if (!isLastStep || submitButton === 'previous') {
+      dispatch(updateFormData(currentStep, data));
       const inc = submitButton === 'next' ? 1 : -1;
       dispatch(updateForm(currentStep + inc));
-    } else {
-      console.log('Form completed and submitted');
+    }
+    if (isLastStep && submitButton === 'next') {
+      console.log('Form validated and submitted');
+      history.push('/');
     }
   };
 
@@ -49,7 +53,7 @@ export const Wizard = () => {
           />
           <ActionButtons
             isFirstStep={isFirstStep}
-            nextText={isLastStep ? 'Validate and Submit' : undefined}
+            nextText={isLastStep ? 'Validate and Submit' : `Next: Step ${currentStep + 1}`}
           />
         </FormContainer>
       </form>

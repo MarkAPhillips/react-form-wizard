@@ -20,6 +20,7 @@ const Employment = ({ formTitle, formOptions, formData }: FormStepProps) => {
         value={company}
         register={register({ required: true })}
         errors={errors}
+        width="280px"
       />
     </FormSection>
   );

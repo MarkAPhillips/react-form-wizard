@@ -20,6 +20,7 @@ const Declaration = ({ formTitle, formOptions, formData }: FormStepProps) => {
         value={declaration}
         register={register({ required: true })}
         errors={errors}
+        width="280px"
       />
     </FormSection>
   );

@@ -16,7 +16,7 @@ type InputTextProps = {
 }
 
 export const Input = styled.input`
-  padding: 0.5em;
+  padding: 0.77em;
   ${rounded}
   border: 1px solid rgb(188,188,188);
 `;

@@ -1,7 +1,8 @@
 // Maps fields to labels
 export const formFieldMapping = {
   roleAppliedFor: 'Role Applied For',
-  name: 'Name',
+  firstName: 'First Name',
+  surname: 'Surname',
   title: 'Title',
   declaration: 'Declaration',
   continuation: 'Additional Information',

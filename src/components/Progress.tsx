@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { formStepsSelector } from '../selectors';
 import { rounded } from '../styles/mixins';
-import { ProgressItem } from '.';
+import { ProgressListItem } from '.';
 
 type ProgressProps = {
   currentStep: number
@@ -22,9 +22,6 @@ const ProgressItems = styled.ul`
   ${rounded}
   background: rgb(235,235,235);
   border: 1px solid rgb(188,188,188);
-  li {
-    padding: 12px 0;
-  }
 `;
 
 export const Progress = ({ currentStep }: ProgressProps) => {
@@ -33,9 +30,7 @@ export const Progress = ({ currentStep }: ProgressProps) => {
     <ProgessContainer>
       <ProgressItems>
         {steps.map(((item) => (
-          <li key={item.id}>
-            <ProgressItem currentStep={currentStep} item={item} />
-          </li>
+          <ProgressListItem currentStep={currentStep} item={item} key={item.id} />
         )))}
       </ProgressItems>
     </ProgessContainer>

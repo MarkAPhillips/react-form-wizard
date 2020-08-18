@@ -43,6 +43,6 @@ export const ActionButtons = ({
 );
 
 ActionButtons.defaultProps = {
-  prevText: 'Back',
+  prevText: 'Previous',
   nextText: 'Continue',
 };
